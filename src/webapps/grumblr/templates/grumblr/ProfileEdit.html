@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Blog Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/grumblr/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/grumblr/css/style.css" rel="stylesheet">
+    <link href="/static/grumblr/css/signin.css" rel="stylesheet">
+    <link href="/static/grumblr/css/profile.css" rel="stylesheet">
+    <link href="/static/grumblr/css/blog.css" rel="stylesheet">
+
+
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+            <a class="blog-nav-item active" href="/">Home</a>
+            <a class="blog-nav-item"href="/Profile/{{request.user.id}}">Profile</a>
+            <a class="blog-nav-item pull-right" href="/SignUp">Sign Up</a>
+            <a class="blog-nav-item pull-right" href="/LogOut">Log out</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <form method="post" action="/Profile/{{request.user.id}}/ProfileEdit/" enctype="multipart/form-data"  class="form-signin">
+            <h2 class="form-signin-heading">Edit profile</h2>
+
+            <br>
+
+
+            <div>
+                <label class="sr-only">First</label>
+                <input type="text" class="form-control" name="firstname" value="{{user.first_name}}" placeholder="First Name" style = width:50%;float:left>
+                <label class="sr-only">Last</label>
+                <input type="text" class="form-control" name="lastname" value="{{user.last_name}}" placeholder="Last Name" style = width:50%;float:left>
+                <label class="sr-only">Last</label>
+                <input type="text" class="form-control" name="age" value="{{profile.age}}" placeholder="Age">
+                <label class="sr-only">Last</label>
+                <textarea type="text" class="form-control" name="bio" placeholder="Bio" style="height: 360px">{{profile.bio}}</textarea>
+                <label class="sr-only">Last</label>
+                <input type="file" class="form-control" name="image">
+            </div>
+
+            <label class="sr-only">Password</label>
+            <input type="password" class="form-control" placeholder="New Password" name="password1" value={{password1}}>
+
+            <label class="sr-only">Confirm Password</label>
+            <input type="password" class="form-control" placeholder="Confirm Password" name="password2" value={{password2}}>
+
+            <br>
+
+            <input class="btn btn-primary Button" type="submit" value="Save">
+            {% csrf_token %}
+
+            <br>
+            <br>
+
+            {% for error in errors %}
+            <p style="color: red">
+            {{ error }}
+            </p>
+            {% endfor %}
+          
+      </div>
+
+    <footer class="blog-footer">
+      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="Profile.html">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+</html>

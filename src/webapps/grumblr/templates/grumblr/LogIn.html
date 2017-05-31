@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>LogIn</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/grumblr/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/grumblr/css/style.css" rel="stylesheet">
+    <link href="/static/grumblr/css/signin.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <div class="container">
+
+      <form class="form-signin" method="post" action="{% url 'login' %}">
+        <h2 class="form-signin-heading">Sign in</h2>
+        <label class="sr-only">User Name</label>
+        {{ form.username }}
+        <label class="sr-only">Password</label>
+        {{ form.password }}
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+          <a href="GlobalStream.html">
+              <input class="btn btn-primary Button" type="submit" value="Login">
+          </a>
+          <a href='/SignUp' class="btn btn-primary Button">
+            Sign up
+          </a>
+
+          <br>
+          <br>
+
+          <a href='/ForgetPassword' class="btn btn-primary Button" style="width: 61%">
+            Forget password
+          </a>
+
+          {% csrf_token %}
+      </form>
+
+    </div> <!-- /container -->
+
+</body>
+</html>
